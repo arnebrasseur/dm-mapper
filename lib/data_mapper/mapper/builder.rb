@@ -95,10 +95,10 @@ module DataMapper
       # @api private
       def self.copy_attributes(mapper, attributes)
         attributes.each do |attribute|
-          if attribute.options[:member_type]
-            mapper.map attribute.name, attribute.options[:member_type], :collection => true
+          if attribute.class.options[:member_type]
+            mapper.map attribute.name, attribute.class.options[:member_type], :collection => true
           else
-            mapper.map attribute.name, attribute.options[:primitive], :association => attribute.options[:association]
+            mapper.map attribute.name, attribute.class.options[:primitive], :association => attribute.class.options[:association]
           end
         end
 
